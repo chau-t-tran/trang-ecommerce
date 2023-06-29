@@ -2,11 +2,40 @@ import { useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { 
+  MantineProvider, 
+  ColorScheme, 
+  ColorSchemeProvider,
+  AppShell,
+  Header,
+  Burger,
+  Title,
+  Text,
+  createStyles
+} from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+import { useDisclosure } from '@mantine/hooks';
+import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
+
+const  useStyles = createStyles((theme) => ({
+  title: {
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    fontSize: 40,
+    fontWeight: 900,
+    letterSpacing: -2,
+
+    [theme.fn.smallerThan('md')]: {
+      fontSize: 40,
+    },
+  },
+}));
+
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
+  const { classes } = useStyles();
   const { Component, pageProps } = props;
+  const [opened, { open, close }] = useDisclosure(false);
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
   const toggleColorScheme = (value?: ColorScheme) => {
@@ -25,8 +54,40 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+      <AppShell
+        padding="md"
+        header={
+          <Header height={60} p="xs">
+            <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+              <Burger
+                opened={opened}
+                onClick={open}
+                size="sm"
+                ml="md"
+                mr="xl" 
+              />
+              <div>
+                <Title className={classes.title} align="center">
+                  Cơm Trắng{" "}
+                  <Text inherit variant="gradient" component="span">
+                    Tuyệt Vời
+                  </Text>
+                </Title>
+              </div>
+              <div style={{ order: 2, marginLeft: 'auto' }}>
+                <ColorSchemeToggle />
+              </div>
+            </div>
+          </Header>
+        }
+        styles={(theme) => ({
+          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+        })}
+      >
           <Component {...pageProps} />
+      </AppShell>
           <Notifications />
+          <NavbarDrawer opened={opened} close={close}/>
         </MantineProvider>
       </ColorSchemeProvider>
     </>
