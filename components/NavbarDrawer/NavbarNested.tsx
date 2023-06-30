@@ -11,7 +11,7 @@ import {
 import { LinksGroup } from './LinksGroup';
 
 const mockdata = [
-  { label: 'Dashboard', icon: IconGauge },
+  { label: '', icon: IconGauge },
   {
     label: 'Market news',
     icon: IconNotes,

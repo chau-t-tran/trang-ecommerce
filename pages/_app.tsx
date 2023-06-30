@@ -18,9 +18,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
 
-const  useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme) => ({
   title: {
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontSize: 40,
     fontWeight: 900,
     letterSpacing: -2,
@@ -55,7 +54,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
       <AppShell
-        padding="md"
+        padding={0}
         header={
           <Header height={60} p="xs">
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
