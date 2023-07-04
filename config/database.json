@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "image": "/ngong.jpg",
+      "name": "Cải Ngồng",
+      "desc": "",
+      "pricePerUnit": 25000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.4,
+      "reviews": 4,
+      "type": "Featured" 
+    },
+    {
+      "image": "/xanh.jpg",
+      "name": "Rau Xanh",
+      "desc": "",
+      "pricePerUnit": 25000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Featured" 
+    },
+    {
+      "image": "/thila.jpg",
+      "name": "Thì Là",
+      "desc": "",
+      "pricePerUnit": 35000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Normal" 
+    },
+    {
+      "image": "/ngori.jpg",
+      "name": "Ngò Rí",
+      "desc": "",
+      "pricePerUnit": 35000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Normal" 
+    },
+    {
+      "image": "/hung.jpg",
+      "name": "Húng Lũi",
+      "desc": "",
+      "pricePerUnit": 35000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Normal" 
+    },
+    {
+      "image": "/hanh.jpg",
+      "name": "Hành Lá",
+      "desc": "",
+      "pricePerUnit": 50000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Normal" 
+    },
+    {
+      "image": "/den.jpg",
+      "name": "Rau Dền",
+      "desc": "",
+      "pricePerUnit": 40000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.6,
+      "reviews": 4,
+      "type": "Normal" 
+    },
+    {
+      "image": "/daukhi.jpg",
+      "name": "Nấm Đầu Khỉ",
+      "desc": "",
+      "pricePerUnit": 120000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 4.5,
+      "reviews": 3,
+      "type": "Normal" 
+    },
+    {
+      "image": "/che.jpeg",
+      "name": "Chè Heo Quay",
+      "desc": "",
+      "pricePerUnit": 50000,
+      "totalQuantity": 50,
+      "quantityUnit": "kg",
+      "rating": 1.4,
+      "reviews": 4,
+      "type": "Normal" 
+    }
+  ]
+}
