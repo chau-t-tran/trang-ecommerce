@@ -13,5 +13,6 @@ export interface IItem {
   quantityUnit: string,
   rating: number,
   reviews: number,
+  sale: number,
   type: ItemType,
 }

@@ -1,12 +1,13 @@
 import { IItem } from '../../contexts/IItem';
 import { 
   createStyles,
+  useMantineTheme,
+  rem,
   Paper, 
   Title, 
   Button, 
-  rem,
-  useMantineTheme,
-  Rating
+  Rating,
+  Indicator,
 } from '@mantine/core';
 import { IconShoppingCart } from '@tabler/icons'
 
@@ -20,18 +21,22 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 900,
     color: theme.white,
     lineHeight: 1.2,
-    fontSize: rem(32),
-    marginTop: theme.spacing.xs,
+    fontSize: rem(12),
   },
+  label: {
+    fontSize: rem(10)
+  },
+  root: {
+    height: '40px'
+  }
 }));
 
-export function Card({ image, name, pricePerUnit, quantityUnit, rating }: IItem) {
+export function Card({ image, name, pricePerUnit, rating, sale }: IItem) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
@@ -47,15 +52,30 @@ export function Card({ image, name, pricePerUnit, quantityUnit, rating }: IItem)
         <Title order={3} className={classes.title}>
           {name}
         </Title>
-        <Rating value={rating}/>
+        <Rating value={rating} size="xs"/>
       </div>
-      <Button 
-        leftIcon={<IconShoppingCart />}
-        variant="white"
-        color="dark"
+      <Indicator 
+        inline 
+        label={`- ${sale}%`}
+        size={14} 
+        offset={-5}
+        radius="xs"
+        color='yellow'
+        disabled={sale <= 0}
       >
-        {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
-      </Button>
+        <Button 
+          leftIcon={<IconShoppingCart />}
+          variant="white"
+          color="dark"
+          size="xs"
+          classNames={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
+          {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
+        </Button>
+      </Indicator>
     </Paper>
   );
 }

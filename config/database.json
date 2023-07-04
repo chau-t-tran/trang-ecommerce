@@ -9,6 +9,7 @@
       "quantityUnit": "kg",
       "rating": 4.4,
       "reviews": 4,
+      "sale": 0,
       "type": "Featured" 
     },
     {
@@ -20,6 +21,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 0,
       "type": "Featured" 
     },
     {
@@ -31,6 +33,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 0,
       "type": "Featured" 
     },
     {
@@ -42,6 +45,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 0,
       "type": "Normal" 
     },
     {
@@ -53,6 +57,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 0,
       "type": "Normal" 
     },
     {
@@ -64,6 +69,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 0,
       "type": "Normal" 
     },
     {
@@ -75,6 +81,7 @@
       "quantityUnit": "kg",
       "rating": 4.6,
       "reviews": 4,
+      "sale": 30,
       "type": "Normal" 
     },
     {
@@ -86,6 +93,7 @@
       "quantityUnit": "kg",
       "rating": 4.5,
       "reviews": 3,
+      "sale": 20,
       "type": "Normal" 
     },
     {
@@ -97,6 +105,7 @@
       "quantityUnit": "kg",
       "rating": 1.4,
       "reviews": 4,
+      "sale": 0,
       "type": "Normal" 
     }
   ]
