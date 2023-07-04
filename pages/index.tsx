@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import { 
   Image, 
   createStyles, 
@@ -10,6 +9,8 @@ import {
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import { InfoTab } from '../components/InfoTab/InfoTab';
+import { Featured } from '../components/Featured/Featured';
+import { DataContextProvider } from '../contexts/DataContextProvider';
 
 const useStyles = createStyles((theme) => ({
   bannerWrapper: {
@@ -38,7 +39,7 @@ export default function HomePage() {
   const { classes } = useStyles();
 
   return (
-    <>
+    <DataContextProvider>
       <Center className={classes.bannerWrapper}>
         <Overlay blur={0} opacity={theme.colorScheme === 'dark' ? 0.85 : 0.50} />
         <Image src="banner.png" height={150} fit="cover"/>
@@ -52,7 +53,8 @@ export default function HomePage() {
           placeholder="Tìm Kiếm"
         />
         <InfoTab />
+        <Featured />
       </Stack>
-    </>
+    </DataContextProvider>
   );
 }
