@@ -10,6 +10,7 @@ import {
 import { IconSearch } from '@tabler/icons';
 import { InfoTab } from '../components/InfoTab/InfoTab';
 import { Featured } from '../components/Featured/Featured';
+import { Inventory } from '../components/Inventory/Inventory';
 import { DataContextProvider } from '../contexts/DataContextProvider';
 
 const useStyles = createStyles((theme) => ({
@@ -54,6 +55,7 @@ export default function HomePage() {
         />
         <InfoTab />
         <Featured />
+        <Inventory />
       </Stack>
     </DataContextProvider>
   );
