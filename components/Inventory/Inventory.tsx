@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { Card } from './Card';
 
-export function Inventory() {
+export default function Inventory() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const cards = data.map((item) => (

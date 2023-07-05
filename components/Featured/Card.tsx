@@ -9,6 +9,7 @@ import {
   Rating
 } from '@mantine/core';
 import { IconShoppingCart } from '@tabler/icons'
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -31,7 +32,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function Card({ image, name, pricePerUnit, quantityUnit, rating }: IItem) {
+export function Card({ id, image, name, pricePerUnit, quantityUnit, rating }: IItem) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
@@ -49,23 +50,15 @@ export function Card({ image, name, pricePerUnit, quantityUnit, rating }: IItem)
         </Title>
         <Rating value={rating}/>
       </div>
-      <Button 
-        leftIcon={<IconShoppingCart />}
-        variant="white"
-        color="dark"
-        /*
-        styles={
-          (theme: MantineTheme) => ({
-            root: {
-              backgroundColor: 'green',
-              border: '1px solid black'
-            }
-          })
-        }
-        */
-      >
-        {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
-      </Button>
+      <Link href={`/item/${id}`}>
+        <Button 
+          leftIcon={<IconShoppingCart />}
+          variant="white"
+          color="dark"
+        >
+          {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
+        </Button>
+      </Link>
     </Paper>
   );
 }

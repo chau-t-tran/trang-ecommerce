@@ -10,11 +10,10 @@ import {
   Space,
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
-import { InfoTab } from '../components/InfoTab/InfoTab';
-import { Featured } from '../components/Featured/Featured';
-import { Inventory } from '../components/Inventory/Inventory';
-import { DataContextProvider } from '../contexts/DataContextProvider';
-import { SubFeatured } from '../components/SubFeatured/SubFeatured';
+import InfoTab from '../components/InfoTab/InfoTab';
+import Featured from '../components/Featured/Featured';
+import Inventory from '../components/Inventory/Inventory';
+import SubFeatured from '../components/SubFeatured/SubFeatured';
 
 const useStyles = createStyles((theme) => ({
   bannerWrapper: {
@@ -43,7 +42,7 @@ export default function HomePage() {
   const { classes } = useStyles();
 
   return (
-    <DataContextProvider>
+    <>
       <Center className={classes.bannerWrapper}>
         <Overlay blur={0} opacity={theme.colorScheme === 'dark' ? 0.85 : 0.50} />
         <Image src="banner.png" height={150} fit="cover"/>
@@ -67,6 +66,6 @@ export default function HomePage() {
           <Space h="md" />
         </Center>
       </Stack>
-    </DataContextProvider>
+    </>
   );
 }

@@ -18,6 +18,7 @@ import { Notifications } from '@mantine/notifications';
 import { useDisclosure } from '@mantine/hooks';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
+import { DataContextProvider } from '../contexts/DataContextProvider';
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -84,7 +85,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
         })}
       >
-          <Component {...pageProps} />
+          <DataContextProvider>
+            <Component {...pageProps} />
+          </DataContextProvider>
           <Space h="md" />
       </AppShell>
           <Notifications />

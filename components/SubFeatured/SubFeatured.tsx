@@ -7,7 +7,7 @@ import { ItemType } from '../../contexts/IItem';
 import { Card } from './Card';
 import Autoplay from 'embla-carousel-autoplay';
 
-export function SubFeatured() {
+export default function SubFeatured() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const featured = data.filter(x => x.type === ItemType.SubFeatured);

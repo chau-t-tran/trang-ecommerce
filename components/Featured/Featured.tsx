@@ -6,7 +6,7 @@ import { ItemType } from '../../contexts/IItem';
 import { Card } from './Card';
 import Autoplay from 'embla-carousel-autoplay';
 
-export function Featured() {
+export default function Featured() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const featured = data.filter(x => x.type === ItemType.Featured);

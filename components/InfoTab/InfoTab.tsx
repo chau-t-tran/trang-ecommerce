@@ -1,7 +1,7 @@
 import { Group, Stack, Paper, Text } from '@mantine/core';
 import { IconPackages, IconDeviceMobileMessage, IconTruckDelivery } from '@tabler/icons-react';
 
-export function InfoTab() {
+export default function InfoTab() {
   return (
     <Group grow spacing={0}>
       <Paper 

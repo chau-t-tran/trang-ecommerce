@@ -5,6 +5,7 @@ export enum ItemType {
 }
 
 export interface IItem {
+  id: string,
   image: string,
   name: string,
   desc: string,
