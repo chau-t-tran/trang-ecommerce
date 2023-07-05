@@ -10,7 +10,7 @@ import Autoplay from 'embla-carousel-autoplay';
 export function SubFeatured() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
-  const featured = data.filter(x => x.type === ItemType.Featured);
+  const featured = data.filter(x => x.type === ItemType.SubFeatured);
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   const autoplay = useRef(Autoplay());
@@ -26,11 +26,11 @@ export function SubFeatured() {
 
   return (
     <Carousel
-      slideSize="100%"
+      slideSize="50%"
       breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 2 }]}
       slideGap="md"
       align="start"
-      slidesToScroll={1}
+      slidesToScroll={mobile ? 1 : 2}
       loop={true}
       plugins={[autoplay.current]}
       onMouseEnter={autoplay.current.stop}

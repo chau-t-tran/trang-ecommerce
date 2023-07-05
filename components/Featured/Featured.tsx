@@ -1,6 +1,5 @@
 import { useContext, useRef } from 'react';
 import { Carousel } from '@mantine/carousel';
-import { useMediaQuery } from '@mantine/hooks';
 import { useMantineTheme } from '@mantine/core';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { ItemType } from '../../contexts/IItem';
@@ -11,7 +10,6 @@ export function Featured() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const featured = data.filter(x => x.type === ItemType.Featured);
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   const autoplay = useRef(Autoplay());
   autoplay.current.options.delay = 3000;
@@ -26,11 +24,11 @@ export function Featured() {
 
   return (
     <Carousel
-      slideSize="50%"
+      slideSize="100%"
       breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 2 }]}
       slideGap="md"
       align="start"
-      slidesToScroll={mobile ? 1 : 2}
+      slidesToScroll={1}
       loop={true}
       plugins={[autoplay.current]}
       onMouseEnter={autoplay.current.stop}

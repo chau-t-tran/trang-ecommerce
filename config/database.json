@@ -94,7 +94,7 @@
       "rating": 4.5,
       "reviews": 3,
       "sale": 20,
-      "type": "Normal" 
+      "type": "SubFeatured" 
     },
     {
       "image": "/che.jpeg",
@@ -106,7 +106,7 @@
       "rating": 1.4,
       "reviews": 4,
       "sale": 0,
-      "type": "Normal" 
+      "type": "SubFeatured"
     }
   ]
 }

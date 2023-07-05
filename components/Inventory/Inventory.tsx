@@ -8,7 +8,7 @@ export function Inventory() {
   const data = useContext(DataContext);
   const cards = data.map((item) => (
     <Card {...item} />
-  ));
+  )).slice(0, 8);
 
   return (
     <SimpleGrid
