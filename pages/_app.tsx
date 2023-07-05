@@ -11,6 +11,7 @@ import {
   Burger,
   Title,
   Text,
+  Space,
   createStyles
 } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
@@ -84,6 +85,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         })}
       >
           <Component {...pageProps} />
+          <Space h="md" />
       </AppShell>
           <Notifications />
           <NavbarDrawer opened={opened} close={close}/>

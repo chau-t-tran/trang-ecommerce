@@ -5,7 +5,9 @@ import {
   Center,
   Overlay,
   Input,
+  Pagination,
   useMantineTheme,
+  Space,
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import { InfoTab } from '../components/InfoTab/InfoTab';
@@ -58,6 +60,12 @@ export default function HomePage() {
         <Featured />
         <Inventory />
         <SubFeatured />
+        <Center>
+          <Pagination total={10} />
+        </Center>
+        <Center>
+          <Space h="md" />
+        </Center>
       </Stack>
     </DataContextProvider>
   );
