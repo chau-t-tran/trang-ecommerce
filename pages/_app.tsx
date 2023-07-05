@@ -32,7 +32,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { classes } = useStyles();
   const { Component, pageProps } = props;

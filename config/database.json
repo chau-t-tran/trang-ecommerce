@@ -3,7 +3,7 @@
     {
       "image": "/ngong.jpg",
       "name": "Cải Ngồng",
-      "desc": "",
+      "desc": "Cải Ngồng là loại rau xanh giàu dinh dưỡng, rất tốt cho sức khỏe. Dễ dàng kết hợp với nhiều món ăn khác nhau.",
       "pricePerUnit": 25000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -15,7 +15,7 @@
     {
       "image": "/xanh.jpg",
       "name": "Rau Xanh",
-      "desc": "",
+      "desc": "Rau Xanh tươi ngon, tốt cho sức khỏe, dùng trong nhiều món ăn như canh, salad, nấu cháo... cung cấp nhiều vitamin và khoáng chất cần thiết cho cơ thể.",
       "pricePerUnit": 25000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -27,7 +27,7 @@
     {
       "image": "/thila.jpg",
       "name": "Thì Là",
-      "desc": "",
+      "desc": "Thì Là là một loại rau gia vị quen thuộc trong nhiều món ăn Việt Nam. Thì Là có mùi thơm đặc trưng, thích hợp cho nhiều món ăn từ canh, xào, đến gỏi.",
       "pricePerUnit": 35000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -39,7 +39,7 @@
     {
       "image": "/ngori.jpg",
       "name": "Ngò Rí",
-      "desc": "",
+      "desc": "Ngò Rí có hương thơm đặc trưng, thường được dùng trong các món nước, nộm, hay làm gia vị cho các món ăn khác.",
       "pricePerUnit": 35000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -51,7 +51,7 @@
     {
       "image": "/hung.jpg",
       "name": "Húng Lũi",
-      "desc": "",
+      "desc": "Húng Lũi có vị thơm nhẹ, phổ biến trong các món canh, nộm và đặc biệt là món chả giò.",
       "pricePerUnit": 35000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -63,7 +63,7 @@
     {
       "image": "/hanh.jpg",
       "name": "Hành Lá",
-      "desc": "",
+      "desc": "Hành Lá thường được dùng làm gia vị trong nhiều món ăn như phở, bún, miến... tạo hương vị thơm ngon, đặc trưng.",
       "pricePerUnit": 50000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -75,7 +75,7 @@
     {
       "image": "/den.jpg",
       "name": "Rau Dền",
-      "desc": "",
+      "desc": "Rau Dền có vị ngọt nhẹ, thích hợp cho các món canh, nộm và rất tốt cho sức khỏe.",
       "pricePerUnit": 40000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -87,7 +87,7 @@
     {
       "image": "/daukhi.jpg",
       "name": "Nấm Đầu Khỉ",
-      "desc": "",
+      "desc": "Nấm Đầu Khỉ có hương vị đặc trưng, dễ chế biến, phù hợp với nhiều món ăn từ xào, nấu canh đến cháo nấm.",
       "pricePerUnit": 120000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
@@ -99,7 +99,7 @@
     {
       "image": "/che.jpeg",
       "name": "Chè Heo Quay",
-      "desc": "",
+      "desc": "Chè Heo Quay là một loại chè đặc sắc, kết hợp hương vị thơm ngon của heo quay và độ ngọt dịu của nước chè, tạo nên một món ăn ngon khó cưỡng.",
       "pricePerUnit": 50000,
       "totalQuantity": 50,
       "quantityUnit": "kg",
