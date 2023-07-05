@@ -12,6 +12,7 @@ import { InfoTab } from '../components/InfoTab/InfoTab';
 import { Featured } from '../components/Featured/Featured';
 import { Inventory } from '../components/Inventory/Inventory';
 import { DataContextProvider } from '../contexts/DataContextProvider';
+import { SubFeatured } from '../components/SubFeatured/SubFeatured';
 
 const useStyles = createStyles((theme) => ({
   bannerWrapper: {
@@ -56,6 +57,7 @@ export default function HomePage() {
         <InfoTab />
         <Featured />
         <Inventory />
+        <SubFeatured />
       </Stack>
     </DataContextProvider>
   );
