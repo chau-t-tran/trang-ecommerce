@@ -1,14 +1,24 @@
 import { SimpleGrid, useMantineTheme } from '@mantine/core';
-import { useContext } from 'react';
+import { 
+  useState, 
+  useEffect, 
+  useContext, 
+  ReactNode 
+} from 'react';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { Card } from '../Inventory/Card';
+import { takeRandom } from '../../utility/array';
 
 export default function Recommended() {
+  const [cards, setCards] = useState<ReactNode>();
   const theme = useMantineTheme();
   const data = useContext(DataContext);
-  const cards = data.map((item) => (
-    <Card item={item} />
-  )).slice(0, 4);
+
+  useEffect(() => {
+    setCards(takeRandom(data.map((item) => (
+      <Card item={item} />
+    )), 4));
+  }, []);
 
   return (
     <SimpleGrid
