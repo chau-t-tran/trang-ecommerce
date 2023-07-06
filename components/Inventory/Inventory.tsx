@@ -7,7 +7,7 @@ export default function Inventory() {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const cards = data.map((item) => (
-    <Card {...item} />
+    <Card item={item} />
   )).slice(0, 8);
 
   return (

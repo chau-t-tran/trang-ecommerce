@@ -18,7 +18,7 @@ export default function Featured() {
 
   const slides = featured.map((item) => (
     <Carousel.Slide key={item.name}>
-      <Card {...item} />
+      <Card item={item} />
     </Carousel.Slide>
   ));
 

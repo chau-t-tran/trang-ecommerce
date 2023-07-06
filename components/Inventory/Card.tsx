@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { IItem } from '../../contexts/IItem';
 import { 
   createStyles,
@@ -5,11 +6,10 @@ import {
   rem,
   Paper, 
   Title, 
-  Button, 
   Rating,
   Indicator,
 } from '@mantine/core';
-import { IconShoppingCart } from '@tabler/icons'
+import CartButton from '../../components/CartButton/CartButton';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -36,7 +36,8 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-export function Card({ image, name, pricePerUnit, rating, sale }: IItem) {
+export function Card({ item }: { item: IItem }) {
+  const router = useRouter();
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
@@ -45,36 +46,28 @@ export function Card({ image, name, pricePerUnit, rating, sale }: IItem) {
       shadow="md"
       p="md"
       radius="md"
-      sx={{ backgroundImage: `url(${image})` }}
+      sx={{ backgroundImage: `url(${item.image})` }}
       className={classes.card}
     >
       <div>
         <Title order={3} className={classes.title}>
-          {name}
+          {item.name}
         </Title>
-        <Rating value={rating} size="xs"/>
+        <Rating value={item.rating} size="xs"/>
       </div>
       <Indicator 
         inline 
-        label={`- ${sale}%`}
+        label={`- ${item.sale}%`}
         size={14} 
         offset={-5}
         radius="xs"
         color='yellow'
-        disabled={sale <= 0}
+        disabled={item.sale <= 0}
       >
-        <Button 
-          leftIcon={<IconShoppingCart />}
-          variant="white"
-          color="dark"
-          size="xs"
-          classNames={{
-            root: classes.root,
-            label: classes.label
-          }}
-        >
-          {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
-        </Button>
+        <CartButton item={item} classNames={{
+          label: classes.label,
+          root: classes.root,
+        }}/>
       </Indicator>
     </Paper>
   );

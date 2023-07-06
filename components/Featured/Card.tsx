@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { IItem } from '../../contexts/IItem';
 import { 
   createStyles,
@@ -8,8 +9,7 @@ import {
   useMantineTheme,
   Rating
 } from '@mantine/core';
-import { IconShoppingCart } from '@tabler/icons'
-import Link from 'next/link';
+import CartButton from '../CartButton/CartButton';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -32,7 +32,8 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function Card({ id, image, name, pricePerUnit, quantityUnit, rating }: IItem) {
+export function Card({ item }: { item: IItem }) {
+  const router = useRouter();
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
@@ -41,24 +42,16 @@ export function Card({ id, image, name, pricePerUnit, quantityUnit, rating }: II
       shadow="md"
       p="md"
       radius="md"
-      sx={{ backgroundImage: `url(${image})` }}
+      sx={{ backgroundImage: `url(${item.image})` }}
       className={classes.card}
     >
       <div>
         <Title order={3} className={classes.title}>
-          {name}
+          {item.name}
         </Title>
-        <Rating value={rating}/>
+        <Rating value={item.rating}/>
       </div>
-      <Link href={`/item/${id}`}>
-        <Button 
-          leftIcon={<IconShoppingCart />}
-          variant="white"
-          color="dark"
-        >
-          {`${pricePerUnit.toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}`}
-        </Button>
-      </Link>
+      <CartButton item={item}/>
     </Paper>
   );
 }
