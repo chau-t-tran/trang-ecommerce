@@ -29,7 +29,6 @@ const useStyles = createStyles((theme) => ({
     paddingRight: '15%',
     paddingLeft: '15%',
     zIndex: 1,
-    height: '1000px',
   },
   searchbar: {
     marginTop: '20px',
@@ -61,9 +60,6 @@ export default function HomePage() {
         <SubFeatured />
         <Center>
           <Pagination total={10} />
-        </Center>
-        <Center>
-          <Space h="md" />
         </Center>
       </Stack>
     </>
