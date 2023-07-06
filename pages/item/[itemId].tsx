@@ -18,6 +18,7 @@ import {
   Button
 } from '@mantine/core';
 import Recommended from '../../components/Recommended/Recommended';
+import { CartActionType, CartContext } from '../../contexts/CartProvider';
 
 const useStyles = createStyles((theme) => ({
   fillHeight: {
@@ -36,6 +37,7 @@ export default function ItemDisplay() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const [weight, setWeight] = useState<number>(1);
+  const cart = useContext(CartContext);
 
   const router = useRouter()
   const itemId = router.query.itemId;
@@ -80,7 +82,14 @@ export default function ItemDisplay() {
                 />
                 <Space h="md" />
                 <Group>
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      cart.dispatch({
+                        type: CartActionType.AddItem,
+                        id: item!.id
+                      });
+                    }}
+                  >
                     Thêm vào giở hàng
                   </Button>
                   <Button>
