@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { 
   createStyles,
@@ -35,6 +35,7 @@ const useStyles = createStyles((theme) => ({
 export default function ItemDisplay() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const [weight, setWeight] = useState<number>(1);
 
   const router = useRouter()
   const itemId = router.query.itemId;
@@ -57,20 +58,25 @@ export default function ItemDisplay() {
             mx="auto"
             fit="fill"
           />
-          <Grid gutter="md">
+          <Grid gutter="sm">
             <Grid.Col>
               <Stack spacing={0}>
-                <Title> {item!.name} </Title>
+                <Title order={3}> {item!.name} </Title>
                 <Rating value={item!.rating}/>
                 <Space h="md" />
                 <Text> {item!.desc} </Text>
-                <Space h="lg" />
+                <Space h="sm" />
+                <Text>
+                  {`${(item!.pricePerUnit * weight).toLocaleString('vi-VN', { style: 'currency', currency: 'VND'})}/ ${weight} kg`}
+                </Text>
+                <Space h="sm" />
                 <NumberInput
-                  defaultValue={1}
+                  defaultValue={weight}
                   placeholder="1"
                   min={1}
                   label="Trọng lượng"
                   formatter={(value) => `${value} kg`}
+                  onChange={(value: number) => setWeight(value)}
                 />
                 <Space h="md" />
                 <Group>
