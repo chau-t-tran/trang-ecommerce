@@ -42,7 +42,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <AppShell
         padding={0}
-        header={ <Header open={open} opened={opened} /> }
+        header={ <Header open={open} opened={opened}/> }
         styles={(theme) => ({
           main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
         })}

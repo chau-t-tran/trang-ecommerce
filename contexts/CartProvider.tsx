@@ -3,11 +3,15 @@ import { createContext, useReducer, ReactNode } from 'react';
 export enum CartActionType {
   AddItem,
   RemoveItem,
+  SetQuantity,
+  RemoveMultipleIds
 }
 
 interface CartAction {
   type: CartActionType;
-  id: string;
+  id?: string;
+  ids?: string[];
+  quantity?: number;
 }
 
 export interface CartState {
@@ -30,21 +34,31 @@ export function CartProvider({ children }: { children: ReactNode }) {
   function cartReducer(state: CartState, action: CartAction): CartState {
     switch (action.type) {
       case CartActionType.AddItem:
-        if (state.cartMap.has(action.id))
+        if (state.cartMap.has(action.id!))
         {
-          const count: number = state.cartMap.get(action.id)!;
-          return {cartMap: state.cartMap.set(action.id, count + 1)};
+          const count: number = state.cartMap.get(action.id!)!;
+          return {cartMap: state.cartMap.set(action.id!, count + 1)};
         }
-        return {cartMap: state.cartMap.set(action.id, 1)};
+        return {cartMap: state.cartMap.set(action.id!, 1)};
 
       case CartActionType.RemoveItem:
-        const count = state.cartMap.get(action.id)!;
+        const count = state.cartMap.get(action.id!)!;
         if (count == undefined || count == 0)
         {
-          state.cartMap.delete(action.id);
+          state.cartMap.delete(action.id!);
           return {cartMap: state.cartMap};
         }
-        return {cartMap: state.cartMap.set(action.id, count - 1)};
+        return {cartMap: state.cartMap.set(action.id!, count - 1)};
+
+      case CartActionType.SetQuantity:
+        if (state.cartMap.has(action.id!))
+        {
+          return {cartMap: state.cartMap.set(action.id!, action.quantity ?? 1)};
+        }
+
+      case CartActionType.RemoveMultipleIds:
+        action.ids!.forEach(id => state.cartMap.delete(id));
+        return {cartMap: state.cartMap};
 
       default:
         return {...state};
