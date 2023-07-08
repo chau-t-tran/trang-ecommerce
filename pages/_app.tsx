@@ -13,9 +13,10 @@ import {
 import { Notifications } from '@mantine/notifications';
 import { useDisclosure } from '@mantine/hooks';
 import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
+import { Header } from '../components/Header/Header';
 import { DataContextProvider } from '../contexts/DataContextProvider';
 import { CartProvider } from '../contexts/CartProvider';
-import { Header } from '../components/Header/Header';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -30,6 +31,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
   return (
     <>
+      <GoogleOAuthProvider clientId="1020638621435-3nothonhkvaujmfch5as0g6nppun6ug1.apps.googleusercontent.com">
       <DataContextProvider>
       <CartProvider>
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
@@ -56,6 +58,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       </ColorSchemeProvider>
       </CartProvider>
       </DataContextProvider>
+      </GoogleOAuthProvider>
     </>
   );
 }

@@ -5,16 +5,13 @@ import {
   Center,
   Overlay,
   Input,
-  Pagination,
   useMantineTheme,
-  Space,
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import InfoTab from '../components/InfoTab/InfoTab';
 import Featured from '../components/Featured/Featured';
 import Inventory from '../components/Inventory/Inventory';
 import SubFeatured from '../components/SubFeatured/SubFeatured';
-import { useState } from 'react';
 import { useInputState } from '@mantine/hooks';
 import Results from '../components/Results/Results';
 
