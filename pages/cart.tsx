@@ -8,12 +8,14 @@ import {
   Title,
   Space,
   Group,
-  Button
+  Button,
+  Divider
 } from '@mantine/core';
 import { CartActionType, CartContext } from '../contexts/CartProvider';
 import { DataContext } from '../contexts/DataContextProvider';
 import CartTable from '../components/CartTable/CartTable';
 import { IItem } from '../contexts/IItem';
+import Prices from '../components/Prices/Prices';
 
 const useStyles = createStyles((theme) => ({
   fillHeight: {
@@ -45,6 +47,7 @@ export default function Cart() {
         <Grid.Col span={12} md={8}>
           <Card padding={30}>
             <Title order={2}>Giỏ Hàng</Title>
+            <Divider />
             <Space h="md" />
             <CartTable 
               items={cartItems} 
@@ -67,8 +70,17 @@ export default function Cart() {
           </Card>
         </Grid.Col>
         <Grid.Col span={12} md={4}>
-          <Card>
+          <Card padding={30}>
             <Title order={2}>Giá</Title>
+            <Divider />
+            <Space h="xs" />
+            <Prices items={cartItems}/>
+            <Space h="xl" />
+            <Group position="right">
+              <Button>
+                Thanh Toán
+              </Button>
+            </Group>
           </Card>
         </Grid.Col>
       </Grid>

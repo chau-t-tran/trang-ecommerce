@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { 
   createStyles,
@@ -19,6 +19,7 @@ import {
 } from '@mantine/core';
 import Recommended from '../../components/Recommended/Recommended';
 import { CartActionType, CartContext } from '../../contexts/CartProvider';
+import { IconCheck } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   fillHeight: {
@@ -36,13 +37,15 @@ const useStyles = createStyles((theme) => ({
 export default function ItemDisplay() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const [weight, setWeight] = useState<number>(1);
-  const cart = useContext(CartContext);
+  const { state, dispatch } = useContext(CartContext);
 
   const router = useRouter()
   const itemId = router.query.itemId;
   const matches = useContext(DataContext).filter(x => x.id === itemId);
   const item = matches.length > 0 ? matches.slice(0, 1)[0] : null;
+
+  const [weight, setWeight] = useState<number>(1);
+  const inCart = state.cartMap.has(item!.id);
 
   return (
     <Stack className={classes.content} spacing="lg">
@@ -78,21 +81,37 @@ export default function ItemDisplay() {
                   min={1}
                   label="Trọng lượng"
                   formatter={(value) => `${value} kg`}
-                  onChange={(value: number) => setWeight(value)}
+                  onChange={(value: number) => {
+                    setWeight(value);
+                    dispatch({
+                      type: CartActionType.SetQuantity,
+                      id: item!.id,
+                      quantity: value
+                    })
+                  }}
                 />
                 <Space h="md" />
                 <Group>
                   <Button
+                    rightIcon={ inCart ? <IconCheck /> : null }
                     onClick={() => {
-                      cart.dispatch({
-                        type: CartActionType.AddItem,
+                      dispatch({
+                        type: inCart ? CartActionType.RemoveItem : CartActionType.AddItem,
                         id: item!.id
                       });
                     }}
                   >
-                    Thêm vào giở hàng
+                    {inCart ? 'Trong giở rồi' : 'Thêm vào giở'}
                   </Button>
-                  <Button>
+                  <Button
+                    onClick={() => {
+                      dispatch({
+                        type: CartActionType.AddItem,
+                        id: item!.id
+                      });
+                      router.push('/cart');
+                    }}
+                  >
                     Mua ngay
                   </Button>
                 </Group>

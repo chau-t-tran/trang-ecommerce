@@ -43,7 +43,12 @@ export function Header({ open, opened }: { open: () => void, opened: boolean }) 
           mr="xl" 
         />
         <div>
-          <Title className={classes.title} align="center">
+          <Title 
+            className={classes.title} 
+            align="center"
+            onClick={() => router.push('/')}
+            style={{ cursor: 'pointer' }}
+          >
             Call Of{" "}
             <Text inherit variant="gradient" component="span">
               Nature

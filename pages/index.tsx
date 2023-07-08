@@ -14,6 +14,9 @@ import InfoTab from '../components/InfoTab/InfoTab';
 import Featured from '../components/Featured/Featured';
 import Inventory from '../components/Inventory/Inventory';
 import SubFeatured from '../components/SubFeatured/SubFeatured';
+import { useState } from 'react';
+import { useInputState } from '@mantine/hooks';
+import Results from '../components/Results/Results';
 
 const useStyles = createStyles((theme) => ({
   bannerWrapper: {
@@ -39,6 +42,7 @@ const useStyles = createStyles((theme) => ({
 export default function HomePage() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const [search, setSearch] = useInputState<string>('');
 
   return (
     <>
@@ -53,14 +57,20 @@ export default function HomePage() {
           radius="md"
           size="md"
           placeholder="Tìm Kiếm"
+          onChange={setSearch}
         />
-        <InfoTab />
-        <Featured />
-        <Inventory />
-        <SubFeatured />
-        <Center>
-          <Pagination total={10} />
-        </Center>
+        {
+          search.length > 0
+          ?
+          <Results search={search} />
+          :
+          <>
+            <InfoTab />
+            <Featured />
+            <Inventory />
+            <SubFeatured />
+          </>
+        }
       </Stack>
     </>
   );

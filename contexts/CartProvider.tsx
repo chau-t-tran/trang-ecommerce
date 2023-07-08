@@ -43,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
       case CartActionType.RemoveItem:
         const count = state.cartMap.get(action.id!)!;
-        if (count == undefined || count == 0)
+        if (count == undefined || count <= 1)
         {
           state.cartMap.delete(action.id!);
           return {cartMap: state.cartMap};

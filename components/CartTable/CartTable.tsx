@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { 
   createStyles,
   useMantineTheme, 
@@ -12,6 +12,7 @@ import {
 } from '@mantine/core';
 import { IItem } from '../../contexts/IItem';
 import { CartActionType, CartContext } from '../../contexts/CartProvider';
+import { useRouter } from 'next/router';
 
 interface CartTableProps {
   items: IItem[], 
@@ -25,6 +26,7 @@ const useStyles = createStyles((theme) => ({
 export default function CartTable({ items, checked, unchecked }: CartTableProps) 
 {
   const theme = useMantineTheme();
+  const router = useRouter();
   const { classes } = useStyles();
   const { state, dispatch } = useContext(CartContext);
 
@@ -50,9 +52,23 @@ export default function CartTable({ items, checked, unchecked }: CartTableProps)
         }}/>
       </td>
       <td>
-        <Image src={item.image} radius={5} width={80} height={80}/>
+        <Image 
+          src={item.image} 
+          radius={5} 
+          width={80} 
+          height={80}
+          onClick={() => router.push(`/item/${item.id}`)}
+          style={{ cursor: 'pointer' }}
+        />
       </td>
-      <td>{item.name}</td>
+      <td>
+      <Text 
+        onClick={() => router.push(`/item/${item.id}`)}
+        style={{ cursor: 'pointer' }}
+      >
+        {item.name}
+      </Text>
+      </td>
       <td>
         <NumberInput
           defaultValue={state.cartMap.get(item.id)}

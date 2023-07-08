@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { Button, ButtonStylesNames } from '@mantine/core';
 import { IItem } from '../../contexts/IItem';
-import { IconShoppingCart } from '@tabler/icons'
+import { IconShoppingCart, IconShoppingCartDiscount } from '@tabler/icons'
 import { ClassNames } from '@mantine/styles';
+import { CartContext } from '../../contexts/CartProvider';
 import { useRouter } from 'next/navigation';
 
 interface CartButtonProps {
@@ -11,10 +13,11 @@ interface CartButtonProps {
 
 export default function CartButton({ item, classNames=undefined}: CartButtonProps) {
   const router = useRouter();
+  const { state, dispatch } = useContext(CartContext);
 
   return (
     <Button 
-      leftIcon={<IconShoppingCart />}
+      leftIcon={state.cartMap.has(item.id) ? <IconShoppingCartDiscount /> : <IconShoppingCart />}
       variant="white"
       color="dark"
       size="xs"
