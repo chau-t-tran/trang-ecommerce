@@ -8,25 +8,31 @@ import {
   ColorSchemeProvider,
   AppShell,
   Space,
-  createStyles
+  useMantineTheme
 } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
 import { Header } from '../components/Header/Header';
 import { DataContextProvider } from '../contexts/DataContextProvider';
 import { CartProvider } from '../contexts/CartProvider';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { SmallHeader } from '../components/SmallHeader/SmallHeader';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [opened, { open, close }] = useDisclosure(false);
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
+  const isSmallScreen = useMediaQuery(`(max-width: 500px)`);
 
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+  };
+
+  const themeOverride = {
+    defaultGradient: { from: 'blue', to: 'teal', deg: 20 }
   };
 
   return (
@@ -35,7 +41,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <DataContextProvider>
       <CartProvider>
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+      <MantineProvider theme={{ colorScheme, ...themeOverride }} withGlobalStyles withNormalizeCSS>
       <Head>
         <title>Mantine next example</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -44,7 +50,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <AppShell
         padding={0}
-        header={ <Header open={open} opened={opened}/> }
+        header={ isSmallScreen ? <SmallHeader /> : <Header open={open} opened={opened}/> }
         styles={(theme) => ({
           main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
         })}

@@ -49,7 +49,7 @@ export default function ItemDisplay() {
 
   return (
     <Stack className={classes.content} spacing="lg">
-      <Card padding={20}>
+      <Card padding={20} radius={10}>
         <SimpleGrid cols={2} spacing="lg" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
           <Image 
             classNames={{
@@ -58,7 +58,7 @@ export default function ItemDisplay() {
               imageWrapper: classes.fillHeight, 
               figure: classes.fillHeight
             }}
-            src={item!.image} 
+            src={item!.image}
             radius="md"
             mx="auto"
             fit="fill"

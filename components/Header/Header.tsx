@@ -21,12 +21,17 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontSize: 40,
     fontWeight: 900,
-    letterSpacing: -2,
-
+    marginTop: '10px',
     [theme.fn.smallerThan('md')]: {
-      fontSize: 40,
+      fontSize: 25,
     },
   },
+  icons: {
+    [theme.fn.smallerThan('md')]: {
+      height: '20px',
+      width: '20px',
+    }
+  }
 }));
 
 interface UserProfile {
@@ -82,40 +87,38 @@ export function Header({ open, opened }: { open: () => void, opened: boolean }) 
           opened={opened}
           onClick={open}
           size="sm"
-          ml="md"
-          mr="xl" 
+          ml="5px"
+          mr="1%" 
         />
-        <div>
-          <Title 
-            className={classes.title} 
-            align="center"
-            onClick={() => router.push('/')}
-            style={{ cursor: 'pointer' }}
-          >
-            Call Of{" "}
-            <Text inherit variant="gradient" component="span">
-              Nature
-            </Text>
-          </Title>
-        </div>
-        <Group style={{ order: 2, marginLeft: 'auto' }}>
+        <Title 
+          className={classes.title} 
+          align="center"
+          onClick={() => router.push('/')}
+          style={{ cursor: 'pointer' }}
+        >
+          Call Of{" "}
+          <Text inherit variant="gradient" component="span">
+            Nature
+          </Text>
+        </Title>
+        <Group spacing="xs" style={{ order: 2, marginLeft: 'auto' }}>
           <ColorSchemeToggle />
           {
             profile == null
             ?
-            <ActionIcon size="xl" onClick={() => login()}>
+            <ActionIcon size="md" onClick={() => login()}>
               <IconUser />
             </ActionIcon>
             :
             <>
               <Avatar src={`${profile.picture}`}/>
-              <ActionIcon size="xl" onClick={logOut}>
+              <ActionIcon size="md" onClick={logOut}>
                 <IconLogout />
               </ActionIcon>
             </>
           }
           <Indicator label={`${state.cartMap.size}`} inline size={16} offset={8} radius={3}>
-            <ActionIcon size="xl" onClick={() => router.push('/cart')}>
+            <ActionIcon size="md" onClick={() => router.push('/cart')}>
               <IconShoppingCart />
             </ActionIcon>
           </Indicator>

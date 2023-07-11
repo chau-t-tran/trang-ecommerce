@@ -20,14 +20,16 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     position: 'absolute',
     zIndex: 0,
-    paddingLeft: '5%',
-    paddingRight: '5%',
   },
   content: {
     position: 'relative',
     marginTop: '175px',
-    paddingRight: '15%',
     paddingLeft: '15%',
+    paddingRight: '15%',
+    [theme.fn.smallerThan("md")]: {
+      paddingLeft: '5%',
+      paddingRight: '5%',
+    },
     zIndex: 1,
   },
   searchbar: {
