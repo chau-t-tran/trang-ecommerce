@@ -54,7 +54,7 @@ export default function Cart() {
     if (cartIds.length == 0)
     {
       notifications.show({
-        title: 'Giở bạn đang trong!',
+        title: 'Giở bạn đang trống!',
         message: ''
       });
       return;
