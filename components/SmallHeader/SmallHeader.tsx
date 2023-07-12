@@ -156,7 +156,7 @@ export function SmallHeader() {
             }
             onClick={() => toggleColorScheme()}
           >
-            Chế Độ Tới
+            Chế Độ Tối
           </Menu.Item>
         }
         </Menu.Dropdown>
