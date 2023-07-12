@@ -11,9 +11,8 @@ import {
   Button,
   Divider
 } from '@mantine/core';
-import {
-  useMediaQuery
-} from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 import { CartActionType, CartContext } from '../contexts/CartProvider';
 import { DataContext } from '../contexts/DataContextProvider';
 import CartTable from '../components/CartTable/CartTable';
@@ -45,9 +44,25 @@ export default function Cart() {
   const { state, dispatch } = useContext(CartContext);
   const cartIds = Array.from(state.cartMap.keys());
   const cartItems: IItem[] = cartIds.flatMap(id => data.find(x => x.id === id) ?? []);
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   useEffect(() => {console.log(selected)}, [selected]);
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
+  const thanhToan = () => {
+    if (cartIds.length == 0)
+    {
+      notifications.show({
+        title: 'Giở bạn đang trong!',
+        message: ''
+      });
+      return;
+    }
+    dispatch({ type: CartActionType.RemoveMultipleIds, ids: cartIds });
+    notifications.show({
+      title: 'Thông báo: bạn đã đặt hàng thành công!',
+      message: 'Quý khách sẽ được gửi đi trong vòng 3-4 ngày làm việc kể từ ngày đặt hàng'
+    });
+  };
 
   return (
     <Stack className={classes.content}>
@@ -88,7 +103,7 @@ export default function Cart() {
             <Prices items={cartItems}/>
             <Space h="xl" />
             <Group position="center">
-              <Button size={mobile ? "xs" : "md"}>
+              <Button size={mobile ? "xs" : "md"} onClick={thanhToan}>
                 Thanh Toán
               </Button>
             </Group>

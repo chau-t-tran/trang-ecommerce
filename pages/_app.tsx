@@ -30,7 +30,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
 
   const themeOverride = {
-    defaultGradient: { from: 'blue', to: 'teal', deg: 20 }
+    defaultGradient: { from: 'blue', to: 'teal', deg: 20 },
   };
 
   return (
