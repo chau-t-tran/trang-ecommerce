@@ -83,7 +83,7 @@ export function SmallHeader() {
   };
 
   return (
-    <Header height={40} p={0}>
+    <Header height={60} p={0}>
       <Menu width={"100%"} offset={0} classNames={{ dropdown: classes.dropdown }}>
         <Menu.Target>
           <ActionIcon style={{width: '100%', height: '100%'}}>
