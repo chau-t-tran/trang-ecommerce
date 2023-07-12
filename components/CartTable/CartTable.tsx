@@ -10,6 +10,9 @@ import {
   Text,
   Space,
 } from '@mantine/core';
+import {
+  useMediaQuery
+} from '@mantine/hooks';
 import { IItem } from '../../contexts/IItem';
 import { CartActionType, CartContext } from '../../contexts/CartProvider';
 import { useRouter } from 'next/router';
@@ -20,15 +23,12 @@ interface CartTableProps {
   unchecked: (id: string) => void 
 }
 
-const useStyles = createStyles((theme) => ({
-}));
-
 export default function CartTable({ items, checked, unchecked }: CartTableProps) 
 {
   const theme = useMantineTheme();
   const router = useRouter();
-  const { classes } = useStyles();
   const { state, dispatch } = useContext(CartContext);
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   const ths = (
     <tr>
@@ -55,8 +55,8 @@ export default function CartTable({ items, checked, unchecked }: CartTableProps)
         <Image 
           src={item.image} 
           radius={5} 
-          width={80} 
-          height={80}
+          width={mobile ? 20 : 80} 
+          height={mobile ? 20 : 80}
           onClick={() => router.push(`/item/${item.id}`)}
           style={{ cursor: 'pointer' }}
         />
@@ -74,13 +74,13 @@ export default function CartTable({ items, checked, unchecked }: CartTableProps)
           defaultValue={state.cartMap.get(item.id)}
           placeholder="1"
           min={1}
-          label="Trọng lượng"
           formatter={(value) => `${value} kg`}
           onChange={(value: number) => dispatch({ 
             type: CartActionType.SetQuantity, 
             id: item.id, 
             quantity: value,
           })}
+          size={ mobile ? "xs" : "md" }
         />
       </td>
     </tr>
@@ -96,7 +96,11 @@ export default function CartTable({ items, checked, unchecked }: CartTableProps)
 
   return (
     <>
-      <Table captionSide="bottom">
+      <Table 
+        captionSide="bottom" 
+        horizontalSpacing={mobile ? "xs" : "md"}
+        fontSize={mobile ? 10 : "sm"}
+      >
         <thead>{ths}</thead>
         <tbody>{rows}</tbody>
       </Table>

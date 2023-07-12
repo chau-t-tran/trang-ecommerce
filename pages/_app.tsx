@@ -12,7 +12,6 @@ import {
 } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { NavbarDrawer } from '../components/NavbarDrawer/NavbarDrawer';
 import { Header } from '../components/Header/Header';
 import { DataContextProvider } from '../contexts/DataContextProvider';
 import { CartProvider } from '../contexts/CartProvider';
@@ -21,7 +20,6 @@ import { SmallHeader } from '../components/SmallHeader/SmallHeader';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
-  const [opened, { open, close }] = useDisclosure(false);
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
   const isSmallScreen = useMediaQuery(`(max-width: 500px)`);
 
@@ -50,16 +48,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <AppShell
         padding={0}
-        header={ isSmallScreen ? <SmallHeader /> : <Header open={open} opened={opened}/> }
+        header={ isSmallScreen ? <SmallHeader /> : <Header /> }
         styles={(theme) => ({
-          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1] },
         })}
       >
               <Component {...pageProps} />
           <Space h="md" />
       </AppShell>
       <Notifications />
-      <NavbarDrawer opened={opened} close={close}/>
       </MantineProvider>
       </ColorSchemeProvider>
       </CartProvider>

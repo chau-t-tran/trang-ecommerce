@@ -11,6 +11,9 @@ import {
   Button,
   Divider
 } from '@mantine/core';
+import {
+  useMediaQuery
+} from '@mantine/hooks';
 import { CartActionType, CartContext } from '../contexts/CartProvider';
 import { DataContext } from '../contexts/DataContextProvider';
 import CartTable from '../components/CartTable/CartTable';
@@ -24,9 +27,13 @@ const useStyles = createStyles((theme) => ({
   content: {
     position: 'relative',
     marginTop: '40px',
-    paddingRight: '15%',
-    paddingLeft: '15%',
     zIndex: 1,
+    paddingLeft: '15%',
+    paddingRight: '15%',
+    [theme.fn.smallerThan("md")]: {
+      paddingLeft: '5%',
+      paddingRight: '5%',
+    },
   },
 }));
 
@@ -40,13 +47,14 @@ export default function Cart() {
   const cartItems: IItem[] = cartIds.flatMap(id => data.find(x => x.id === id) ?? []);
 
   useEffect(() => {console.log(selected)}, [selected]);
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
     <Stack className={classes.content}>
       <Grid>
         <Grid.Col span={12} md={8}>
-          <Card padding={30}>
-            <Title order={2}>Giỏ Hàng</Title>
+          <Card padding={mobile ? 15 : 30}>
+            <Title order={mobile ? 4 : 2}>Giỏ Hàng</Title>
             <Divider />
             <Space h="md" />
             <CartTable 
@@ -59,25 +67,28 @@ export default function Cart() {
               }
             />
             <Space h="md" />
-            <Group position="right">
-              <Button onClick={() => dispatch({
-                type: CartActionType.RemoveMultipleIds,
-                ids: selected,
-              })}>
+            <Group position="center">
+              <Button 
+                size={mobile ? "xs" : "md"}
+                onClick={() => dispatch({
+                  type: CartActionType.RemoveMultipleIds,
+                  ids: selected,
+                })}
+              >
                 Xóa
               </Button>
             </Group>
           </Card>
         </Grid.Col>
         <Grid.Col span={12} md={4}>
-          <Card padding={30}>
-            <Title order={2}>Giá</Title>
+          <Card padding={mobile ? 15 : 30}>
+            <Title order={mobile ? 4 : 2}>Giá</Title>
             <Divider />
             <Space h="xs" />
             <Prices items={cartItems}/>
             <Space h="xl" />
-            <Group position="right">
-              <Button>
+            <Group position="center">
+              <Button size={mobile ? "xs" : "md"}>
                 Thanh Toán
               </Button>
             </Group>

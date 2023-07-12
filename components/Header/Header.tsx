@@ -22,6 +22,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: 40,
     fontWeight: 900,
     marginTop: '10px',
+    marginLeft: '20px',
     [theme.fn.smallerThan('md')]: {
       fontSize: 25,
     },
@@ -41,11 +42,10 @@ interface UserProfile {
   picture: string;
 }
 
-export function Header({ open, opened }: { open: () => void, opened: boolean }) {
+export function Header() {
   const { classes } = useStyles();
   const router = useRouter();
   const { state, dispatch } = useContext(CartContext);
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   const [ user, setUser ] = useState<TokenResponse>();
   const [ profile, setProfile ] = useState<UserProfile | null>(null);
@@ -83,13 +83,6 @@ export function Header({ open, opened }: { open: () => void, opened: boolean }) 
   return (
     <Hdr height={60} p="xs">
       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-        <Burger
-          opened={opened}
-          onClick={open}
-          size="sm"
-          ml="5px"
-          mr="1%" 
-        />
         <Title 
           className={classes.title} 
           align="center"
