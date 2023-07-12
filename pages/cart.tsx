@@ -25,13 +25,15 @@ const useStyles = createStyles((theme) => ({
   },
   content: {
     position: 'relative',
-    marginTop: '40px',
     zIndex: 1,
     paddingLeft: '15%',
     paddingRight: '15%',
+    paddingTop: '40px',
     [theme.fn.smallerThan("md")]: {
-      paddingLeft: '5%',
-      paddingRight: '5%',
+      paddingLeft: '25px',
+      paddingRight: '25px',
+      paddingTop: '25px',
+      marginBottom: '50px'
     },
   },
 }));
@@ -65,7 +67,7 @@ export default function Cart() {
   };
 
   return (
-    <Stack className={classes.content}>
+    <Stack className={classes.content} spacing={ mobile ? '25px' : '40px' }>
       <Grid>
         <Grid.Col span={12} md={8}>
           <Card padding={mobile ? 15 : 30}>
