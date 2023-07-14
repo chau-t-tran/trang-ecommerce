@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataContextProvider';
 import { Card } from './Card';
 
-export default function Inventory() {
+export default function Inventory({ from, to }: { from: number, to: number }) {
   const theme = useMantineTheme();
   const data = useContext(DataContext);
   const cards = data.map((item) => (
     <Card item={item} />
-  )).slice(0, 8);
+  )).slice(from, to);
 
   return (
     <SimpleGrid

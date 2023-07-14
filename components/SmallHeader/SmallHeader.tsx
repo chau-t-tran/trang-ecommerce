@@ -9,6 +9,7 @@ import {
   Text,
   Title,
   Group,
+  Avatar
 } from '@mantine/core';
 import { IconChevronDown, IconHome, IconLogout, IconMoon, IconMoonStars, IconShoppingCart, IconSun, IconUser } from '@tabler/icons';
 import { useRouter } from 'next/navigation';
@@ -88,9 +89,11 @@ export function SmallHeader() {
         <Menu.Target>
           <ActionIcon style={{width: '100%', height: '100%'}}>
             <Group>
+              <Avatar src="./logo.png" />
               <Title 
                 className={classes.title} 
                 align="center"
+                onClick={() => router.push('/')}
                 style={{ cursor: 'pointer' }}
               >
                 Call Of{" "}
@@ -98,7 +101,6 @@ export function SmallHeader() {
                   Nature
                 </Text>
               </Title>
-              <IconChevronDown />
             </Group>
           </ActionIcon>
         </Menu.Target>

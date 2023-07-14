@@ -2,13 +2,13 @@ import { useContext, useState, useEffect } from 'react';
 import { 
   createStyles,
   Header as Hdr,
-  Burger,
   Title,
   Text,
   ActionIcon,
   Indicator,
   Group,
   Avatar,
+  Image
 } from '@mantine/core';
 import { IconLogout, IconShoppingCart, IconUser } from '@tabler/icons';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
@@ -82,18 +82,21 @@ export function Header() {
 
   return (
     <Hdr height={60} p="xs">
-      <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-        <Title 
-          className={classes.title} 
-          align="center"
-          onClick={() => router.push('/')}
-          style={{ cursor: 'pointer' }}
-        >
-          Call Of{" "}
-          <Text inherit variant="gradient" component="span">
-            Nature
-          </Text>
-        </Title>
+      <div style={{ display: 'flex', alignItems: 'center', height: '100%', padding: '5px' }}>
+        <Group spacing={1}>
+          <Avatar src="./logo.png" />
+          <Title 
+            className={classes.title} 
+            align="center"
+            onClick={() => router.push('/')}
+            style={{ cursor: 'pointer' }}
+          >
+            Call Of{" "}
+            <Text inherit variant="gradient" component="span">
+              Nature
+            </Text>
+          </Title>
+        </Group>
         <Group spacing="xs" style={{ order: 2, marginLeft: 'auto' }}>
           <ColorSchemeToggle />
           {

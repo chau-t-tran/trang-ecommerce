@@ -66,8 +66,9 @@ export default function HomePage() {
           <>
             <InfoTab />
             <Featured />
-            <Inventory />
+            <Inventory from={0} to={8}/>
             <SubFeatured />
+            <Inventory from={8} to={24}/>
           </>
         }
       </Stack>
